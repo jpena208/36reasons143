@@ -1,0 +1,30 @@
+{
+  "name": "josepena-website",
+  "version": "1.0.0",
+  "description": "Resume and portfolio website.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpena208/josepena-website.git"
+  },
+  "keywords": [
+    "responsive"
+  ],
+  "author": "Jose Pena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jpena208/josepena-website/issues"
+  },
+  "homepage": "https://github.com/jpena208/josepena-website#readme",
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "autoprefixer": "^10.4.4",
+    "bootstrap": "^5.1.3",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "sass": "^1.50.0"
+  }
+}

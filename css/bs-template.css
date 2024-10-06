@@ -1,0 +1,229 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.bg-light {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-light-rgb), 0.63) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1 {
+  font-family: "montserrat", sans-serif;
+  font-weight: 673;
+  line-height: 1.2;
+}
+
+h1,
+.h1 {
+  font-size: calc(1.55rem + 3vw);
+}
+
+@media (min-width: 768px) {
+  h1,
+  .h1 {
+    font-size: 4.5rem;
+  }
+}
+
+h2,
+.h2 {
+  font-size: calc(1.475rem + 2.7vw);
+}
+@media (min-width: 1200px) {
+  h2,
+  .h2 {
+    font-size: 2.5rem;
+  }
+}
+
+h3,
+.h3 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+
+@media (min-width: 1200px) {
+  h3,
+  .h3 {
+    font-size: 2rem;
+  }
+}
+
+/* rtl:raw:
+[type="tel"],
+[type="url"],
+[type="email"],
+[type="number"] {
+  direction: ltr;
+}
+*/
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 0;
+    padding-left: 13rem;
+  }
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  letter-spacing: 0.1rem;
+}
+
+h1,
+.h1 {
+  line-height: 1;
+}
+
+.fw-normal {
+  font-weight: 400;
+}
+
+.fs-7 {
+  font-size: 0.875rem;
+}
+
+.subheading {
+  font-family: "montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.edu-subheading {
+  /* Uhh, text too long in education section so got shrinked */
+  font-family: "montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+#sideNav {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+#sideNav .navbar-nav .nav-item .nav-link {
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+}
+#sideNav .navbar-toggler:focus {
+  outline-color: #d48a6e;
+}
+
+@media (min-width: 992px) {
+  #sideNav {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 13rem;
+    height: 100vh;
+  }
+  #sideNav .navbar-brand {
+    display: flex;
+    margin: auto auto 0;
+    padding: 0.5rem;
+  }
+  #sideNav .navbar-brand .img-profile {
+    max-width: 10rem;
+    max-height: 10rem;
+    border: 0.5rem solid var(--bs-primary);
+  }
+  #sideNav .navbar-collapse {
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 0;
+    width: 100%;
+    margin-bottom: auto;
+  }
+  #sideNav .navbar-collapse .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+  #sideNav .navbar-collapse .navbar-nav .nav-item {
+    display: block;
+  }
+  #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
+    display: block;
+  }
+}
+
+.social-icons .social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  background-color: #495057;
+  color: #fff;
+  border-radius: 100%;
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+}
+.social-icons .social-icon:last-child {
+  margin-right: 0;
+}
+.social-icons .social-icon:hover {
+  background-color: var(--bs-primary);
+}
+
+section.resume-section {
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+section.resume-section .resume-section-content {
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  section.resume-section {
+    padding-left: 2.5rem;
+  }
+}
+@media (min-width: 768px) {
+  section.resume-section {
+    min-height: 100vh;
+  }
+}
+@media (min-width: 992px) {
+  section.resume-section {
+    padding-left: 3rem;
+    padding-right: 20%;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}

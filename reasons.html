@@ -121,6 +121,35 @@
             .find(".modal-content")
             .css("aspect-ratio", isLandscape ? "4 / 3" : "3 / 4");
         });
+
+        // Update modal background on orientation change or resize
+        const handleResize = () => {
+          const modal = $("#tulipModal");
+          if (modal.hasClass("show")) {
+            const activeTulipIcon = $(".tulip-icon.active");
+            if (activeTulipIcon.length) {
+              const bgPortrait = activeTulipIcon.data("bg-portrait");
+              const bgLandscape = activeTulipIcon.data("bg-landscape");
+              const isLandscape = window.innerWidth > window.innerHeight;
+              modal
+                .find(".modal-content")
+                .css(
+                  "background-image",
+                  isLandscape ? bgLandscape : bgPortrait
+                );
+              modal
+                .find(".modal-content")
+                .css("aspect-ratio", isLandscape ? "4 / 3" : "3 / 4");
+            }
+          }
+        };
+
+        $(window).on("orientationchange resize", handleResize);
+
+        // Remove active class when modal is hidden
+        $("#tulipModal").on("hidden.bs.modal", function () {
+          $(".tulip-icon.active").removeClass("active");
+        });
       });
     </script>
   </body>

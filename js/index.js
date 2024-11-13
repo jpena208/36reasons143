@@ -171,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const modalBody = document.querySelector(".modal-body");
         modalBody.innerHTML = `<div class="modal-text fs-6 fs-sm-5 fs-md-4 fs-lg-3">${text}</div>`;
         updateModalBackground(tulipIcon);
+        tulipIcon.classList.add("active"); // Mark the clicked tulip icon as active
       }
     });
 
@@ -178,9 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const handleResize = () => {
       const modal = document.getElementById("tulipModal");
       if (modal.classList.contains("show")) {
-        const activeTulipIcon = document.querySelector(
-          ".tulip-icon[data-toggle='modal'].active"
-        );
+        const activeTulipIcon = document.querySelector(".tulip-icon.active");
         if (activeTulipIcon) {
           updateModalBackground(activeTulipIcon);
         }
@@ -189,6 +188,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("orientationchange", handleResize);
     window.addEventListener("resize", handleResize);
+
+    // Remove active class when modal is hidden
+    $("#tulipModal").on("hidden.bs.modal", function () {
+      const activeTulipIcon = document.querySelector(".tulip-icon.active");
+      if (activeTulipIcon) {
+        activeTulipIcon.classList.remove("active");
+      }
+    });
   } else {
     console.error("Tulip container not found");
   }

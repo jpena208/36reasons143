@@ -150,31 +150,27 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", checkScrollHint);
 
     // Function to update modal background and aspect ratio
-    const updateModalBackground = () => {
+    const updateModalBackground = (tulipIcon) => {
       const modalContent = document.querySelector(".modal-content");
-      const tulipIcon = document.querySelector(
-        ".tulip-icon[data-toggle='modal']"
-      );
-      if (tulipIcon) {
-        const bgPortrait = tulipIcon.getAttribute("data-bg-portrait");
-        const bgLandscape = tulipIcon.getAttribute("data-bg-landscape");
-        const isLandscape = window.innerWidth > window.innerHeight;
-        modalContent.style.backgroundImage = isLandscape
-          ? bgLandscape
-          : bgPortrait;
-        modalContent.style.aspectRatio = isLandscape ? "4 / 3" : "3 / 4";
-      }
+      const bgPortrait = tulipIcon.getAttribute("data-bg-portrait");
+      const bgLandscape = tulipIcon.getAttribute("data-bg-landscape");
+      const isLandscape = window.innerWidth > window.innerHeight;
+      modalContent.style.backgroundImage = isLandscape
+        ? bgLandscape
+        : bgPortrait;
+      modalContent.style.aspectRatio = isLandscape ? "4 / 3" : "3 / 4";
     };
 
     // Add event listener to update modal title and background
     tulipContainer.addEventListener("click", function (event) {
       if (event.target.classList.contains("tulip-icon")) {
-        const title = event.target.getAttribute("data-title");
-        const text = event.target.getAttribute("data-text");
+        const tulipIcon = event.target;
+        const title = tulipIcon.getAttribute("data-title");
+        const text = tulipIcon.getAttribute("data-text");
         document.getElementById("tulipModalLabel").textContent = title;
         const modalBody = document.querySelector(".modal-body");
         modalBody.innerHTML = `<div class="modal-text fs-6 fs-sm-5 fs-md-4 fs-lg-3">${text}</div>`;
-        updateModalBackground();
+        updateModalBackground(tulipIcon);
       }
     });
 
@@ -182,7 +178,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const handleResize = () => {
       const modal = document.getElementById("tulipModal");
       if (modal.classList.contains("show")) {
-        updateModalBackground();
+        const activeTulipIcon = document.querySelector(
+          ".tulip-icon[data-toggle='modal'].active"
+        );
+        if (activeTulipIcon) {
+          updateModalBackground(activeTulipIcon);
+        }
       }
     };
 

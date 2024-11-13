@@ -102,5 +102,26 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#tulipModal").on("show.bs.modal", function (event) {
+          const button = $(event.relatedTarget); // Button that triggered the modal
+          const title = button.data("title");
+          const text = button.data("text");
+          const bgPortrait = button.data("bg-portrait");
+          const bgLandscape = button.data("bg-landscape");
+          const isLandscape = window.innerWidth > window.innerHeight;
+          const modal = $(this);
+          modal.find(".modal-title").text(title);
+          modal.find(".modal-body .modal-text").text(text);
+          modal
+            .find(".modal-content")
+            .css("background-image", isLandscape ? bgLandscape : bgPortrait);
+          modal
+            .find(".modal-content")
+            .css("aspect-ratio", isLandscape ? "4 / 3" : "3 / 4");
+        });
+      });
+    </script>
   </body>
 </html>

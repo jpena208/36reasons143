@@ -163,8 +163,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add event listener to update modal title and background
     tulipContainer.addEventListener("click", function (event) {
-      if (event.target.classList.contains("tulip-icon")) {
-        const tulipIcon = event.target;
+      const tulipIcon = event.target.closest(".tulip-icon");
+      if (tulipIcon) {
         const title = tulipIcon.getAttribute("data-title");
         const text = tulipIcon.getAttribute("data-text");
         document.getElementById("tulipModalLabel").textContent = title;

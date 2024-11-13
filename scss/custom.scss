@@ -1,7 +1,7 @@
 /* Bootstrap source customizations
 -------------------------------------------------- */
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-@import "../node_modules/bootstrap/scss/functions";
+@import "~bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
 // Theme colors
@@ -21,9 +21,9 @@ $navbar-dark-hover-color: rgba($primary, 0.75);
 $navbar-dark-active-color: $primary;
 
 // 3. Include remainder of required Bootstrap stylesheets
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/root";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
 
 //    Include function stuff like maps here
 // Merge the maps

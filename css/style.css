@@ -307,30 +307,817 @@ h6 {
   z-index: 2;
 }
 
-.heart-button {
-  background-color: #d63384; /* Customize with your tertiary color */
-  border: none;
-  border-radius: 20%;
-  padding: 15px 20px;
-  color: white;
-  font-size: 24px;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-  text-align: center;
+svg {
+  cursor: pointer;
+  overflow: visible;
+  width: 60px;
+  margin: 20px;
 }
 
-.heart-button:hover {
-  background-color: #ff6f61; /* Lighter hover state */
+svg #heart {
+  transform-origin: center;
+  animation: animateHeartOut 0.3s linear forwards;
 }
 
-/* Change button color */
-.btn-primary {
-  background-color: #d63384; /* Customize with your tertiary color */
-  border: none;
-  border-radius: 20%;
-  padding: 15px 20px;
-  color: white;
-  display: inline-block;
-  transition: background-color 0.5s ease;
-  text-align: center;
+svg #main-circ {
+  transform-origin: center; /* Center the circle */
+}
+
+.checkbox {
+  display: none;
+}
+
+.checkbox:checked + label svg #heart {
+  transform: scale(0.5) translateY(10px); /* Adjusted scale and position */
+  fill: #cf6c80;
+  animation: animateHeart 0.3s linear forwards 0.25s;
+}
+
+.checkbox:checked + label svg #main-circ {
+  transition: all 2s;
+  animation: animateCircle 0.3s linear forwards;
+  opacity: 1;
+  transform: translate(
+    -3px,
+    22px
+  ); /* Move the circle slightly to the left and down */
+}
+
+.checkbox:checked + label svg #heartgroup1 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup1 #heart1 {
+  transform: scale(0) translate(0, -30px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup1 #heart2 {
+  transform: scale(0) translate(10px, -50px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup2 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup2 #heart1 {
+  transform: scale(0) translate(30px, -15px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup2 #heart2 {
+  transform: scale(0) translate(60px, -15px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup3 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup3 #heart1 {
+  transform: scale(0) translate(30px, 0px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup3 #heart2 {
+  transform: scale(0) translate(60px, 10px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup4 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup4 #heart1 {
+  transform: scale(0) translate(30px, 15px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup4 #heart2 {
+  transform: scale(0) translate(40px, 50px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup5 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup5 #heart1 {
+  transform: scale(0) translate(-10px, 20px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup5 #heart2 {
+  transform: scale(0) translate(-60px, 30px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup6 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup6 #heart1 {
+  transform: scale(0) translate(-30px, 0px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup6 #heart2 {
+  transform: scale(0) translate(-60px, -5px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup7 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup7 #heart1 {
+  transform: scale(0) translate(-30px, -15px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup7 #heart2 {
+  transform: scale(0) translate(-55px, -30px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup2 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup3 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup4 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup5 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup6 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #heartgroup7 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+@keyframes animateCircle {
+  40% {
+    transform: scale(14); /* Adjusted position */
+    opacity: 1;
+    fill: #dd4688;
+  }
+
+  55% {
+    transform: scale(15); /* Adjusted position */
+    opacity: 1;
+    fill: #d46abf;
+  }
+
+  65% {
+    transform: scale(16); /* Adjusted position */
+    opacity: 1;
+    fill: #cc8ef5;
+  }
+
+  75% {
+    transform: scale(17); /* Adjusted position */
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.5;
+  }
+
+  85% {
+    transform: scale(21); /* Adjusted position */
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.2;
+  }
+
+  95% {
+    transform: scale(22); /* Adjusted position */
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.1;
+  }
+
+  100% {
+    transform: scale(23); /* Adjusted position */
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0;
+  }
+}
+
+@keyframes animateHeart {
+  0% {
+    transform: scale(0.2);
+  }
+
+  40% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animateHeartOut {
+  0% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.checkbox:checked + label svg #heartText {
+  animation: animateHeartText 0.3s linear forwards 0.25s;
+}
+
+@keyframes animateHeartText {
+  0% {
+    transform: scale(0.5);
+  }
+
+  40% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Tulip Icon Styles */
+.tulip-icon {
+  width: 50px;
+  height: 50px;
+  background-image: url("../public/assets/img/icons/tulip-bg.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin: 10px; /* Add margin to create padding between tulips */
+  position: relative; /* Ensure the heart SVG is positioned relative to the tulip icon */
+}
+.tulip-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}
+.tulip-icon:active {
+  transform: scale(0.9);
+}
+
+/* For screens 577px and above */
+@media (min-width: 577px) {
+  .tulip-icon svg {
+    position: absolute;
+    bottom: 8px; /* Adjust this value to move the heart up or down */
+    right: -17px; /* Adjust this value to move the heart left or right */
+    width: 41px; /* Adjust size */
+    height: 41px; /* Adjust size */
+    fill: none;
+    stroke: #fff; /* White outline */
+    stroke-width: 4; /* Thicker outline */
+  }
+}
+
+/* For screens smaller than 577px */
+@media (max-width: 576px) {
+  .tulip-icon {
+    width: 30px;
+    height: 30px;
+    margin: 5px; /* Adjust margin for smaller screens */
+  }
+  .tulip-icon svg {
+    position: absolute;
+    bottom: 5px; /* Adjust position for smaller screens */
+    right: 10px; /* Adjust position for smaller screens */
+    width: 30px; /* Adjust size for smaller screens */
+    height: 30px; /* Adjust size for smaller screens */
+    fill: none;
+    stroke: #fff; /* White outline */
+    stroke-width: 4; /* Thicker outline */
+  }
+}
+
+/* Responsive grid for tulip icons */
+#tulip-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 15px; /* Default gap */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px; /* Increase distance from bottom edge */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 80px); /* Increase distance from left and right edges */
+  padding: 20px; /* Add padding to prevent edges from being cut off */
+  max-height: 50vh; /* Ensure the container does not extend beyond the top halfway point */
+  overflow-y: auto; /* Add vertical scroll if content exceeds max height */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+/* For screens smaller than 576px */
+@media (max-width: 576px) {
+  #tulip-container {
+    gap: 2px !important; /* Reduce gap for smaller screens and ensure it is prioritized */
+  }
+}
+
+/* For screens smaller than 1024px (5 rows, 8 columns) */
+@media (max-width: 1024px) {
+  #tulip-container {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    bottom: 20px; /* Increase distance from bottom edge */
+    width: calc(100% - 80px); /* Increase distance from left and right edges */
+    padding: 20px; /* Add padding to prevent edges from being cut off */
+  }
+}
+
+/* For tablet screens (4 rows, 9 columns) */
+@media (max-width: 768px) {
+  #tulip-container {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    bottom: 20px; /* Increase distance from bottom edge */
+    width: calc(100% - 80px); /* Increase distance from left and right edges */
+    padding: 20px; /* Add padding to prevent edges from being cut off */
+  }
+}
+
+/* For smaller screens (7 rows, 6 columns) */
+@media (max-width: 1199px) {
+  #tulip-container {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    bottom: 20px; /* Increase distance from bottom edge */
+    width: calc(100% - 80px); /* Increase distance from left and right edges */
+    padding: 20px; /* Add padding to prevent edges from being cut off */
+  }
+}
+
+/* For very small screens, shrink the size of the icons */
+@media (max-width: 576px) {
+  .tulip-icon {
+    width: 30px;
+    height: 30px;
+    margin: 5px; /* Adjust margin for smaller screens */
+  }
+  .tulip-icon svg {
+    bottom: -5px; /* Adjust position for smaller screens */
+    right: -17.5px; /* Adjust position for smaller screens */
+    width: 25px; /* Adjust size for smaller screens */
+    height: 25px; /* Adjust size for smaller screens */
+    padding: 0px; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Scroll hint styles */
+.scroll-hint {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 10;
+  display: none; /* Initially hidden */
+}
+
+/* Modal background styles */
+.modal-dialog {
+  max-width: 80%;
+  width: auto;
+  height: auto;
+  margin: 1.75rem auto;
+}
+.modal-content {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: #fff; /* Ensure text is white */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for better visibility */
+  aspect-ratio: 3 / 4; /* Default to 3:4 aspect ratio */
+  border-radius: 15px; /* Round the edges of the modal */
+  margin-top: 6rem; /* Adjust this value to lower the modal */
+}
+.modal-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Subtle overlay effect */
+  z-index: 1;
+  border-radius: 15px; /* Ensure the overlay follows the rounded edges */
+}
+.modal-content > * {
+  position: relative;
+  z-index: 2;
+}
+.modal-body {
+  padding: 20px; /* Add padding for text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 1.5rem; /* Default font size */
+}
+.modal-text {
+  font-weight: 400;
+}
+
+/* Adjust modal size for landscape mode */
+@media (min-width: 576px) and (min-height: 576px) and (min-aspect-ratio: 4/3) {
+  .modal-dialog {
+    max-width: 50%; /* Set max width to 50% of the screen width */
+    max-height: 50vh; /* Set max height to 50% of the screen height */
+  }
+  .modal-content {
+    aspect-ratio: 4 / 3; /* Maintain a 4:3 aspect ratio */
+  }
+}
+
+/* Adjust modal size for portrait mode */
+@media (max-width: 576px), (max-aspect-ratio: 3/4) {
+  .modal-dialog {
+    max-height: 50vh; /* Set max height to 50% of the screen height */
+    max-width: 50vw; /* Set max width to 50% of the screen width */
+  }
+  .modal-content {
+    aspect-ratio: 3 / 4; /* Maintain a 3:4 aspect ratio */
+  }
+}
+
+/* Adjust modal size based on screen width and height */
+@media (max-width: 100vh) {
+  .modal-dialog {
+    max-height: 50vh; /* Set max height to 50% of the screen height */
+    max-width: 50vw; /* Set max width to 50% of the screen width */
+  }
+  .modal-content {
+    aspect-ratio: 3 / 4; /* Maintain a 3:4 aspect ratio */
+  }
+}
+
+@media (min-width: 100vh) {
+  .modal-dialog {
+    max-width: 50%; /* Set max width to 50% of the screen width */
+    max-height: 50vh; /* Set max height to 50% of the screen height */
+  }
+  .modal-content {
+    aspect-ratio: 4 / 3; /* Maintain a 4:3 aspect ratio */
+  }
+}
+
+/* Reduce font size and padding for smaller screens */
+@media (max-width: 576px) {
+  .modal-title {
+    font-size: 1.25rem; /* Reduce font size for smaller screens */
+  }
+  .modal-text {
+    font-size: 1rem; /* Reduce font size */
+  }
+  .modal-body {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 577px) {
+  .modal-text {
+    font-size: 1.25rem; /* Increase font size for larger screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.5rem; /* Further increase font size for larger screens */
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.75rem; /* Further increase font size for larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 2rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Reduce font size and padding for smaller screens */
+@media (max-width: 576px) {
+  .modal-title {
+    font-size: 1.25rem; /* Reduce font size for smaller screens */
+  }
+  .modal-text {
+    font-size: 1rem; /* Reduce font size */
+  }
+  .modal-body {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 577px) {
+  .modal-text {
+    font-size: 1.25rem; /* Increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.5rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.75rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 2rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Reduce font size and padding for smaller screens */
+@media (max-width: 576px) {
+  .modal-title {
+    font-size: 1.25rem; /* Reduce font size for smaller screens */
+  }
+  .modal-text {
+    font-size: 1rem; /* Reduce font size */
+  }
+  .modal-body {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 577px) {
+  .modal-text {
+    font-size: 1.25rem; /* Increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.5rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.75rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 2rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Reduce font size and padding for smaller screens */
+@media (max-width: 576px) {
+  .modal-title {
+    font-size: 1.25rem; /* Reduce font size for smaller screens */
+  }
+  .modal-text {
+    font-size: 1rem; /* Reduce font size */
+  }
+  .modal-body {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 577px) {
+  .modal-text {
+    font-size: 1.25rem; /* Increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.5rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.75rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 2rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Reduce font size and padding for smaller screens */
+@media (max-width: 576px) {
+  .modal-title {
+    font-size: 1.25rem; /* Reduce font size for smaller screens */
+  }
+  .modal-text {
+    font-size: 1rem; /* Reduce font size */
+  }
+  .modal-body {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 577px) {
+  .modal-text {
+    font-size: 1.25rem; /* Increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.5rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.75rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 2rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.5rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.75rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 2rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Reduce font size and padding for smaller screens */
+@media (max-width: 576px) {
+  .modal-title {
+    font-size: 1.25rem; /* Reduce font size for smaller screens */
+  }
+  .modal-text {
+    font-size: 0.8rem !important; /* Reduce font size */
+  }
+  .modal-body {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 577px) {
+  .modal-text {
+    font-size: 1rem !important; /* Increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.25rem !important; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.5rem !important; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 1.5rem !important; /* Further increase font size for larger screens */
+  }
+}
+
+/* Reduce font size and padding for smaller screens */
+@media (max-width: 576px) {
+  .modal-title {
+    font-size: 1.25rem; /* Reduce font size for smaller screens */
+  }
+  .modal-text {
+    font-size: 1rem; /* Reduce font size */
+  }
+  .modal-body {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 577px) {
+  .modal-text {
+    font-size: 1.25rem; /* Increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.5rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.75rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 2rem; /* Further increase font size for larger screens */
+  }
 }

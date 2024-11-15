@@ -46,6 +46,24 @@
         <!-- Back Home Button -->
         <div class="text-center mt-3">
           <a href="index.html" class="btn btn-primary">Back Home</a>
+          <div class="dropdown d-inline">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="pictureSetDropdown"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Months
+            </button>
+            <div class="dropdown-menu" aria-labelledby="pictureSetDropdown">
+              <a class="dropdown-item" href="#" data-set="Month">Months</a>
+              <a class="dropdown-item" href="#" data-set="Pics"
+                >Nice Pictures</a
+              >
+            </div>
+          </div>
         </div>
         <div class="container">
           <!-- Generate 36 tulip icons -->
@@ -74,7 +92,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -89,7 +107,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -100,10 +118,114 @@
       </main>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
     <script>
       $(document).ready(function () {
+        let pictureSet = "Month"; // Default picture set
+
+        const updatePictureSet = async () => {
+          console.log("Updating picture set to:", pictureSet);
+          const tulipIcons = document.querySelectorAll(".tulip-icon");
+
+          for (let i = 0; i < tulipIcons.length; i++) {
+            const index = i + 1;
+            let foundPortrait = false;
+            let foundLandscape = false;
+
+            // Try different extensions
+            for (const ext of ["png", "jpg", "jpeg"]) {
+              const portraitUrl = `public/assets/img/Portrait/Modal/${pictureSet}/Modal-${index}.${ext}`;
+              const landscapeUrl = `public/assets/img/Landscape/Modal/${pictureSet}/Modal-${index}.${ext}`;
+
+              try {
+                // Only update if new image is found
+                if (await imageExists(portraitUrl)) {
+                  tulipIcons[i].setAttribute(
+                    "data-bg-portrait",
+                    `url('${portraitUrl}')`
+                  );
+                  foundPortrait = true;
+                }
+                if (await imageExists(landscapeUrl)) {
+                  tulipIcons[i].setAttribute(
+                    "data-bg-landscape",
+                    `url('${landscapeUrl}')`
+                  );
+                  foundLandscape = true;
+                }
+                if (foundPortrait && foundLandscape) {
+                  console.log(`Updated paths for tulip ${index}`);
+                  break;
+                }
+              } catch (error) {
+                // Only log errors for the first tulip which should always exist
+                if (index === 1) {
+                  console.warn(
+                    `Error checking image for tulip ${index}:`,
+                    error
+                  );
+                }
+              }
+            }
+
+            // Only warn about missing images for the first tulip
+            if ((!foundPortrait || !foundLandscape) && index === 1) {
+              console.warn(
+                `Could not find images for tulip ${index} in ${pictureSet} folder`
+              );
+            }
+          }
+          console.log(`Finished updating tulip icons for ${pictureSet} set`);
+        };
+
+        // Modify dropdown click handler
+        $(".dropdown-item").on("click", async function (e) {
+          e.preventDefault();
+          const selectedSet = $(this).data("set");
+          const selectedText = $(this).text();
+
+          if (pictureSet !== selectedSet) {
+            pictureSet = selectedSet;
+            $("#pictureSetDropdown").text(selectedText);
+            console.log(`Switching to picture set: ${pictureSet}`);
+
+            // Update all tulip icons
+            await updatePictureSet();
+
+            // Update modal if it's open
+            const modal = $("#tulipModal");
+            if (modal.hasClass("show")) {
+              const activeTulipIcon = $(".tulip-icon.active")[0];
+              if (activeTulipIcon) {
+                const isLandscape = window.innerWidth > window.innerHeight;
+                modal
+                  .find(".modal-content")
+                  .css(
+                    "background-image",
+                    isLandscape
+                      ? activeTulipIcon.getAttribute("data-bg-landscape")
+                      : activeTulipIcon.getAttribute("data-bg-portrait")
+                  );
+              }
+            }
+          }
+        });
+
+        // Rest of the code remains the same
+        const imageExists = (url) => {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+          });
+        };
+
+        // Initial update to set the correct paths
+        updatePictureSet();
+
         $("#tulipModal").on("show.bs.modal", function (event) {
           const button = $(event.relatedTarget); // Button that triggered the modal
           const title = button.data("title");
@@ -120,31 +242,33 @@
           modal
             .find(".modal-content")
             .css("aspect-ratio", isLandscape ? "4 / 3" : "3 / 4");
+          console.log(
+            `Modal background set to: ${isLandscape ? bgLandscape : bgPortrait}`
+          );
         });
 
         // Update modal background on orientation change or resize
         const handleResize = () => {
           const modal = $("#tulipModal");
           if (modal.hasClass("show")) {
-            const activeTulipIcon = $(".tulip-icon.active");
-            if (activeTulipIcon.length) {
-              const bgPortrait = activeTulipIcon.data("bg-portrait");
-              const bgLandscape = activeTulipIcon.data("bg-landscape");
+            const activeTulipIcon = $(".tulip-icon.active")[0];
+            if (activeTulipIcon) {
               const isLandscape = window.innerWidth > window.innerHeight;
+              // Use getAttribute to be consistent with the click handler
+              const bgImage = isLandscape
+                ? activeTulipIcon.getAttribute("data-bg-landscape")
+                : activeTulipIcon.getAttribute("data-bg-portrait");
               modal
                 .find(".modal-content")
-                .css(
-                  "background-image",
-                  isLandscape ? bgLandscape : bgPortrait
-                );
-              modal
-                .find(".modal-content")
+                .css("background-image", bgImage)
                 .css("aspect-ratio", isLandscape ? "4 / 3" : "3 / 4");
             }
           }
         };
 
-        $(window).on("orientationchange resize", handleResize);
+        // Use the debounced version to prevent multiple rapid calls
+        const debouncedHandleResize = _.debounce(handleResize, 250);
+        $(window).on("orientationchange resize", debouncedHandleResize);
 
         // Remove active class when modal is hidden
         $("#tulipModal").on("hidden.bs.modal", function () {

@@ -896,26 +896,6 @@ svg #main-circ {
   }
 }
 
-/* Reduce font size and padding for smaller screens */
-@media (max-width: 576px) {
-  .modal-title {
-    font-size: 1.25rem; /* Reduce font size for smaller screens */
-  }
-  .modal-text {
-    font-size: 1rem; /* Reduce font size */
-  }
-  .modal-body {
-    padding: 10px; /* Reduce padding */
-  }
-}
-
-/* Increase font size for larger screens */
-@media (min-width: 577px) {
-  .modal-text {
-    font-size: 1.25rem; /* Increase font size for larger screens */
-  }
-}
-
 /* Increase font size for larger screens */
 @media (min-width: 768px) {
   .modal-text {
@@ -954,6 +934,27 @@ svg #main-circ {
 @media (min-width: 577px) {
   .modal-text {
     font-size: 1.25rem; /* Increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+  .modal-text {
+    font-size: 1.5rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 992px) {
+  .modal-text {
+    font-size: 1.75rem; /* Further increase font size for larger screens */
+  }
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 1200px) {
+  .modal-text {
+    font-size: 2rem; /* Further increase font size for larger screens */
   }
 }
 
@@ -1081,43 +1082,16 @@ svg #main-circ {
   }
 }
 
-/* Reduce font size and padding for smaller screens */
-@media (max-width: 576px) {
-  .modal-title {
-    font-size: 1.25rem; /* Reduce font size for smaller screens */
-  }
-  .modal-text {
-    font-size: 1rem; /* Reduce font size */
-  }
-  .modal-body {
-    padding: 10px; /* Reduce padding */
-  }
+/* ...existing code... */
+
+#togglePictures {
+  z-index: 1050; /* Ensure it stays above the modal */
+  position: relative; /* Ensure it stays above other elements */
 }
 
-/* Increase font size for larger screens */
-@media (min-width: 577px) {
-  .modal-text {
-    font-size: 1.25rem; /* Increase font size for larger screens */
-  }
+#togglePictures.active {
+  background-color: #6c757d; /* Change color when active */
+  color: #fff; /* Ensure text is readable */
 }
 
-/* Increase font size for larger screens */
-@media (min-width: 768px) {
-  .modal-text {
-    font-size: 1.5rem; /* Further increase font size for larger screens */
-  }
-}
-
-/* Increase font size for larger screens */
-@media (min-width: 992px) {
-  .modal-text {
-    font-size: 1.75rem; /* Further increase font size for larger screens */
-  }
-}
-
-/* Increase font size for larger screens */
-@media (min-width: 1200px) {
-  .modal-text {
-    font-size: 2rem; /* Further increase font size for larger screens */
-  }
-}
+/* ...existing code... */

@@ -15,62 +15,68 @@ if (icon) {
 // Generate 37 tulip icons dynamically
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded and parsed");
+  let pictureSet = "Month"; // Default picture set
+
   const tulipContainer = document.getElementById("tulip-container");
   if (tulipContainer) {
     console.log("Tulip container found");
     const reasons = [
-      "You always know how to make me smile. You gave me this smile that nobody else could. I smile that I could love myself more. Thank you so much <3",
-      "Your kindness and generosity inspire me.",
-      "You are my best friend and confidant.",
-      "You have a heart of gold.",
-      "You support me in everything I do.",
-      "You make every moment special.",
-      "You are incredibly thoughtful and caring.",
-      "You have a beautiful soul.",
-      "You are my rock and my safe haven.",
-      "You make me a better person.",
-      "You are always there for me.",
-      "You have an amazing sense of humor.",
-      "You are my partner in crime.",
-      "You are my biggest cheerleader.",
-      "You are my soulmate.",
-      "You are my everything.",
-      "You make me feel loved and cherished.",
-      "You are my sunshine on a cloudy day.",
-      "You are my adventure buddy.",
-      "You are my home.",
-      "You are my dream come true.",
-      "You are my forever love.",
-      "You are my heart and soul.",
-      "You are my reason for everything.",
-      "You are my greatest blessing.",
-      "You are my one and only.",
-      "You are my happily ever after.",
-      "You are my love and my life.",
-      "You are my everything and more.",
-      "You are my heart's desire.",
-      "You are my perfect match.",
-      "You are my better half.",
-      "You are my true love.",
-      "You are my best friend and lover.",
-      "You are my world.",
-      "You are my heart's delight.",
-      "You are my one true love.",
+      "You are my best friend and lover, my everything and more.",
+      "You care for me with such tenderness, your every word or touch is healing.",
+      "You are incredibly hard working and resiliant, it makes me so proud.",
+      "You are intelligent and though-provoking, it helps me grow.",
+      "You are passionate about things you love and I love listening to them.",
+      "You are a nerd just like me. We both can just be nerds together",
+      "You have many interests and hobbies I love to get to know and support.",
+      "You have a beautiful soul that needs to write to breath sometimes.",
+      "You have such a beautiful smile.",
+      "You truly make me a better person.",
+      "You are introverted like me, but you are also extroverted when you need to be.",
+      "You are a real partner, a teammate in life.",
+      "You gave me my smile that I now love.",
+      "You are my biggest cheerleader, you motivate me to live life to the fullest.",
+      "You give me confidence in myself",
+      "Your contagious smile, beautiful when you are happy.",
+      "Your big pretty eyes, that I could stare into all day.",
+      "The shape of you, perfect in my eyes.",
+      "Your compliments and adorations with my pictures.",
+      "Your creativity and ingenuity, I'm always amazed.",
+      "Sharing everything with you always felt right.",
+      "Your sniffing attacks, baby voice, squishes that make me laugh so much",
+      "Your morning cuddles that are so warm and comforting.",
+      "You crochet the cutest, lovely things.",
+      "You trust me fully, and I trust you fully.",
+      "We have nothing to be embarrassed about, we are just us.",
+      "Your squishy cute cute nose, boop.",
+      "Your morning messy hair, it's perfect.",
+      "You spoil me, in more ways than you might realize.",
+      "You somehow like chores I don't like, and vice versa.",
+      "You love all my cooking, and you're always so excited for it.",
+      "You have wonderful friends, making an awesome social life and plenty days to share.",
+      "You share everything with me. I'm never left out.",
+      "You have wonderful style. I love to try and match with you.",
+      "You have grown so much on this journey with me, as well as I with you",
+      "Hanging out with you is the best part of my day",
+      "You stayed, even when it was hardest. You remained persistent and patient.",
     ];
 
     for (let i = 0; i < 37; i++) {
       const tulipIcon = document.createElement("div");
       tulipIcon.className = "tulip-icon";
-      tulipIcon.setAttribute("data-toggle", "modal");
-      tulipIcon.setAttribute("data-target", "#tulipModal");
+      tulipIcon.setAttribute("data-bs-toggle", "modal");
+      tulipIcon.setAttribute("data-bs-target", "#tulipModal");
       tulipIcon.setAttribute("data-title", `Tulip Reason ${i + 1}`);
       tulipIcon.setAttribute(
         "data-bg-portrait",
-        `url('public/assets/img/Portrait/Modal/Modal-${i + 1}.png')`
+        `url('public/assets/img/Portrait/Modal/${pictureSet}/Modal-${
+          i + 1
+        }.png')`
       );
       tulipIcon.setAttribute(
         "data-bg-landscape",
-        `url('public/assets/img/Landscape/Modal/Modal-${i + 1}.png')`
+        `url('public/assets/img/Landscape/Modal/${pictureSet}/Modal-${
+          i + 1
+        }.png')`
       );
       tulipIcon.setAttribute("data-text", reasons[i]);
       tulipIcon.innerHTML = `
@@ -196,6 +202,16 @@ document.addEventListener("DOMContentLoaded", function () {
         activeTulipIcon.classList.remove("active");
       }
     });
+
+    // Remove or comment out the old dropdown event listeners
+    /*
+    const dropdownItems = document.querySelectorAll(".dropdown-item");
+    dropdownItems.forEach((item) => {
+      item.addEventListener("click", async function () {
+        // ... old code ...
+      });
+    });
+    */
   } else {
     console.error("Tulip container not found");
   }
